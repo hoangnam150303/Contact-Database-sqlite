@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import java.util.HashMap;
 public class UserDetailActivity extends AppCompatActivity {
 
     TextView tvDetailName, tvDetailEmail, tvDetailPhone;
+    ImageView ivDetailAvatar;
     Button btnEditUser, btnDeleteUser;
     DatabaseHelper dbHelper;
     int userId;
@@ -25,6 +27,8 @@ public class UserDetailActivity extends AppCompatActivity {
         tvDetailName = findViewById(R.id.tvDetailName);
         tvDetailEmail = findViewById(R.id.tvDetailEmail);
         tvDetailPhone = findViewById(R.id.tvDetailPhone);
+        ivDetailAvatar = findViewById(R.id.ivDetailAvatar);
+
         btnEditUser = findViewById(R.id.btnEditUser);
         btnDeleteUser = findViewById(R.id.btnDeleteUser);
 
@@ -45,12 +49,22 @@ public class UserDetailActivity extends AppCompatActivity {
             finish();
         });
     }
-
     private void loadUserDetail() {
         HashMap<String, String> user = dbHelper.getUserById(userId);
         tvDetailName.setText("Full name: " + user.get("name"));
         tvDetailEmail.setText("Email: " + user.get("email"));
         tvDetailPhone.setText("Phone number: " + user.get("phone"));
+
+
+        String imageString = user.get("image");
+        if (imageString != null && !imageString.isEmpty()) {
+            try {
+                int resId = Integer.parseInt(imageString);
+                ivDetailAvatar.setImageResource(resId);
+            } catch (NumberFormatException e) {
+                ivDetailAvatar.setImageResource(R.drawable.avartar1);
+            }
+        }
     }
 
     @Override

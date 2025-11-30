@@ -14,11 +14,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="✏️ Update Information"
+            android:text="✏️ Update User"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Avatar"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:id="@+id/layoutAvatarContainer"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </LinearLayout>
+        </HorizontalScrollView>
         <EditText
             android:id="@+id/etUpdateName"
             android:layout_width="match_parent"
@@ -43,7 +62,7 @@
             android:id="@+id/btnUpdateUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="Update"
             android:layout_marginTop="16dp" />
     </LinearLayout>
 </ScrollView>
